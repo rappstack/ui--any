@@ -1,0 +1,47 @@
+{
+	"name": "@rappstack/ui--any",
+	"type": "module",
+	"version": "0.0.0",
+	"description": "UI library targeting the browser & server",
+	"keywords": [
+		"rappstack",
+		"reactive",
+		"full-stack",
+		"domain",
+		"isomorphic",
+		"server",
+		"blog"
+	],
+	"homepage": "https://github.com/rappstack/ui--any",
+	"bugs": {
+		"url": "https://github.com/rappstack/ui--any/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/rappstack/ui--any.git"
+	},
+	"license": "Apache-2.0",
+	"author": "Brian Takita",
+	"types": "index.ts",
+	"exports": {
+		".": "./index.ts",
+		"./anchor": "./anchor/index.ts",
+		"./package.json": "./package.json"
+	},
+	"files": [
+		"*.d.ts",
+		"*.js",
+		"*.json",
+		"anchor"
+	],
+	"dependencies": {
+		"ctx-core": "^5.38.1",
+		"relementjs": "^0.64.2"
+	},
+	"devDependencies": {
+		"bun-types": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5.3.3"
+	}
+}
