@@ -36,7 +36,7 @@
 	],
 	"dependencies": {
 		"ctx-core": "^6.1.0",
-		"relementjs": "^0.66.0"
+		"relementjs": "^0.67.0"
 	},
 	"devDependencies": {
 		"bun-types": "latest"
