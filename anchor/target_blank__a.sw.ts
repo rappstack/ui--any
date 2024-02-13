@@ -55,12 +55,7 @@ export function target_blank__a_<env_T extends relement_env_T>(
 		])
 	)
 }
-export function tb_a_<env_T extends relement_env_T>(
-	$p:target_blank_a__props_T,
-	...children:tag_dom_T[]
-) {
-	return target_blank__a_<env_T>($p, ...children)
-}
+export { target_blank__a_ as tb_a_ }
 export type target_blank_a__props_T = {
 	href:string
 	innerText?:string|number
