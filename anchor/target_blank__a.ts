@@ -1,4 +1,4 @@
-import { attr_val_, class_ } from 'ctx-core/html'
+import { class_ } from 'ctx-core/html'
 import { raw_, type relement_env_T, switch_, type tag_dom_T } from 'relementjs'
 import { type tag_props_T } from 'relementjs/any'
 import { a_ } from 'relementjs/html'
@@ -14,9 +14,7 @@ export function target_blank__a_<env_T extends relement_env_T>(
 				'a_target_blank',
 				'whitespace-nowrap',
 				$p.class),
-			rel: attr_val_(
-				'noopener noreferrer',
-				$p.rel),
+			rel: $p.rel ?? 'noopener noreferrer',
 			target: '_blank',
 		}, [
 			switch_({
