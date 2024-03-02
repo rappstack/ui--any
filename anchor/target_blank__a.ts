@@ -59,6 +59,28 @@ export function target_blank__a_<env_T extends relement_env_T>(
 	)
 }
 export { target_blank__a_ as tb_a_ }
+export function target_blank_a___new<env_T extends relement_env_T>(
+	$p:target_blank_a__props_T,
+	...children:tag_dom_T[]
+) {
+	return (
+		...arg_a:
+			|[Partial<target_blank_a__props_T>, ...tag_dom_T[]]
+			|tag_dom_T[]
+	)=>{
+		const arg_a__has_props = Object.getPrototypeOf(arg_a[0] ?? 0) === Object.prototype
+		return <env_T>target_blank__a_(
+			arg_a__has_props
+				? { ...$p, ...<Partial<target_blank_a__props_T>>arg_a[0] }
+				: $p,
+			...(
+				arg_a__has_props
+					? arg_a.length > 1 ? <tag_dom_T[]>arg_a.slice(1) : children
+					: arg_a.length ? <tag_dom_T[]>arg_a : children)
+		)
+	}
+}
+export { target_blank_a___new as tb_a___new }
 export type target_blank_a__props_T = {
 	href:string
 	innerText?:string|number
