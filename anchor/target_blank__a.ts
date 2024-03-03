@@ -13,6 +13,7 @@ export function target_blank__a_<env_T extends relement_env_T>(
 			class: class_(
 				'a_target_blank',
 				'whitespace-nowrap',
+				'group',
 				$p.class),
 			rel:
 				$p.rel
@@ -43,7 +44,8 @@ export function target_blank__a_<env_T extends relement_env_T>(
 					'w-2.5',
 					'-mt-3',
 					'ml-1',
-					'inline-block'),
+					'inline-block',
+					'group-hover:fill-current'),
 				viewBox: '0 0 16 16'
 			}, [
 				path_({
