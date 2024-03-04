@@ -24,3 +24,6 @@ const marked = new Marked(
 export function md__raw_(md:string) {
 	return raw_(marked.parse(md))
 }
+export function md__inline_raw_(md:string) {
+	return raw_(marked.parseInline(md))
+}
