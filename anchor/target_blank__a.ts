@@ -61,6 +61,13 @@ export function target_blank__a_<env_T extends relement_env_T>(
 	)
 }
 export { target_blank__a_ as tb_a_ }
+export function nofollow_target_blank__a_<env_T extends relement_env_T>(
+	$p:target_blank_a__props_T,
+	...children:tag_dom_T[]
+) {
+	return target_blank__a_({ ...$p, nofollow: true }, ...children)
+}
+export { target_blank__a_ as nofollow_tb_a_ }
 export function target_blank_a___new<env_T extends relement_env_T>(
 	$p:target_blank_a__props_T,
 	...children:tag_dom_T[]
