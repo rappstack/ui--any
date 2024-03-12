@@ -37,11 +37,11 @@
 		"md"
 	],
 	"dependencies": {
-		"ctx-core": "^6.5.4",
+		"ctx-core": "^6.5.5",
 		"highlight.js": "^11.9.0",
 		"marked": "^12.0.1",
 		"marked-highlight": "^2.1.1",
-		"relementjs": "^0.74.4"
+		"relementjs": "^0.74.5"
 	},
 	"devDependencies": {
 		"bun-types": "latest"
