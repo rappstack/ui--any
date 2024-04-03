@@ -3,6 +3,16 @@ import { raw_, type relement_env_T, switch_, type tag_dom_T } from 'relementjs'
 import { type tag_props_T } from 'relementjs/any'
 import { a_ } from 'relementjs/html'
 import { path_, svg_ } from 'relementjs/svg'
+export type target_blank_a__props_T = {
+	href:string
+	wrap?:boolean
+	innerText?:string|number
+	innerHTML?:string
+	class?:string
+	style?:string
+	nofollow?:boolean
+	rel?:string
+}&tag_props_T<HTMLAnchorElement>
 export function target_blank__a_<env_T extends relement_env_T>(
 	$p:target_blank_a__props_T,
 	...children:tag_dom_T[]
@@ -12,7 +22,7 @@ export function target_blank__a_<env_T extends relement_env_T>(
 			...$p,
 			class: class_(
 				'a_target_blank',
-				'whitespace-nowrap',
+				!$p.wrap ? 'whitespace-nowrap' : null,
 				'group',
 				$p.class),
 			rel:
@@ -32,16 +42,14 @@ export function target_blank__a_<env_T extends relement_env_T>(
 			}, ...children),
 			svg_({
 				xmlns: 'http://www.w3.org/2000/svg',
-				width: 16,
-				height: 16,
 				fill: 'currentColor',
 				class: class_(
 					'bi',
 					'bi-box-arrow-up-right',
 					'relative',
 					'top-0',
-					'h-2.5',
-					'w-2.5',
+					'h-3',
+					'w-3',
 					'-mt-3',
 					'ml-1',
 					'inline-block',
@@ -90,13 +98,4 @@ export function target_blank_a___new<env_T extends relement_env_T>(
 	}
 }
 export { target_blank_a___new as tb_a___new }
-export type target_blank_a__props_T = {
-	href:string
-	innerText?:string|number
-	innerHTML?:string
-	class?:string
-	style?:string
-	nofollow?:boolean
-	rel?:string
-}&tag_props_T<HTMLAnchorElement>
 
