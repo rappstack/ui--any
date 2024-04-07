@@ -6,7 +6,7 @@ import sh from 'highlight.js/lib/languages/shell'
 import ts from 'highlight.js/lib/languages/typescript'
 import { Marked } from 'marked'
 import { markedHighlight } from 'marked-highlight'
-import { raw_ } from 'relementjs'
+import { raw_, type relement_env_T } from 'relementjs'
 hljs.registerLanguage('cs', cs)
 hljs.registerLanguage('js', js)
 hljs.registerLanguage('sh', sh)
@@ -21,9 +21,9 @@ const marked = new Marked(
 		}
 	})
 )
-export function md__raw_(md:string) {
-	return raw_(marked.parse(md))
+export function md__raw_<E extends relement_env_T>(md:string) {
+	return raw_<E>(marked.parse(md))
 }
-export function md__inline_raw_(md:string) {
-	return raw_(marked.parseInline(md))
+export function md__inline_raw_<E extends relement_env_T>(md:string) {
+	return raw_<E>(marked.parseInline(md))
 }
