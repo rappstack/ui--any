@@ -26,6 +26,7 @@
 	"exports": {
 		".": "./index.ts",
 		"./anchor": "./anchor/index.ts",
+		"./dl": "./dl/index.ts",
 		"./md": "./md/index.ts",
 		"./package.json": "./package.json"
 	},
@@ -34,6 +35,7 @@
 		"*.js",
 		"*.json",
 		"anchor",
+		"dl",
 		"md"
 	],
 	"dependencies": {
