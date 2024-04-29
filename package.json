@@ -28,6 +28,7 @@
 		"./anchor": "./anchor/index.ts",
 		"./dl": "./dl/index.ts",
 		"./md": "./md/index.ts",
+		"./string": "./string/index.ts",
 		"./package.json": "./package.json"
 	},
 	"files": [
@@ -36,7 +37,8 @@
 		"*.json",
 		"anchor",
 		"dl",
-		"md"
+		"md",
+		"string"
 	],
 	"dependencies": {
 		"ctx-core": "^7.2.2",
