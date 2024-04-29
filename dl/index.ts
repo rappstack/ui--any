@@ -20,7 +20,7 @@ export function dl_tree_(
 	props_OR_dt_dd_pair_a1:dl_tree_props_T|dt_dd_pair_a1_T,
 	dt_dd_pair_a1?:dt_dd_pair_a1_T
 ) {
-	if ((<dl_tree_props_T>props_OR_dt_dd_pair_a1).ctx.is_ctx) {
+	if ((<dl_tree_props_T>props_OR_dt_dd_pair_a1).ctx?.is_ctx) {
 		const {
 			ctx,
 			dl_class,
