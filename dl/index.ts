@@ -27,20 +27,26 @@ export function dl_tree_(
 			dt_class,
 			dd_class,
 		} = <dl_tree_props_T>props_OR_dt_dd_pair_a1
-		return dl_({ class: dl_class }, dt_dd_pair_a1!.map(([_dt, _dd])=>[
-			dt_(
-				{ class: dt_class },
-				typeof _dt === 'string'
-					? md__raw_(ctx, _dt)
-					: _dt),
-			_dd
-				? dd_(
-					{ class: dd_class },
-					typeof _dd === 'string'
-						? md__raw_(ctx, _dd)
-						: _dd)
-				: null,
-		]))
+		return dl_({ class: dl_class }, dt_dd_pair_a1!.map(([_dt, _dd])=>{
+			const _dt_a1 = <tag_dom_T[]>(<any[]>[_dt]).flat(Infinity)
+			const _dd_a1 = _dd ? <tag_dom_T[]>(<any[]>[_dd]).flat(Infinity) : null
+			return [
+				dt_(
+					{ class: dt_class },
+					_dt_a1.map(__dt=>
+						typeof __dt === 'string'
+							? md__raw_(ctx, __dt)
+							: __dt)),
+				_dd
+					? dd_(
+						{ class: dd_class },
+						_dd_a1!.map(__dd=>
+							typeof __dd === 'string'
+								? md__raw_(ctx, __dd)
+								: __dd))
+					: null,
+			]
+		}))
 	} else {
 		dt_dd_pair_a1 = <dt_dd_pair_a1_T>props_OR_dt_dd_pair_a1
 		return dl_(dt_dd_pair_a1.map(([_dt, _dd])=>[
@@ -51,7 +57,7 @@ export function dl_tree_(
 		]))
 	}
 }
-type dt_dd_pair_a1_T = ([tag_dom_T, tag_dom_T|[tag_props_T<HTMLElement>, tag_dom_T]]|[tag_dom_T])[]
+type dt_dd_pair_a1_T = ([tag_dom_T, tag_dom_T]|[tag_dom_T])[]
 export function dt_md_(
 	$p:tag_props_T<HTMLElementTagNameMap['dt']>&{ ctx:wide_ctx_T },
 	md:string
