@@ -1,55 +1,72 @@
 /// <reference lib="dom" />
-import { type tag_dom_T, type wide_ctx_T } from 'relementjs'
+import { type relement_env_T, type tag_dom_T, type wide_ctx_T } from 'relementjs'
 import { type tag_props_T } from 'relementjs/any'
 import { dd_, dl_, dt_ } from 'relementjs/html'
 import { md__raw_ } from '../md/index.js'
 export type dl_tree_props_T = {
 	ctx:wide_ctx_T
+	prefix?:tag_dom_T
+	suffix?:tag_dom_T
 	dl_class?:string
 	dt_class?:string
 	dd_class?:string
 }
-export function dl_tree_(
+export function dl_tree_<env_T extends relement_env_T>(
 	dt_dd_pair_a1:dt_dd_pair_a1_T
 ):tag_dom_T
-export function dl_tree_(
+export function dl_tree_<env_T extends relement_env_T>(
 	props:dl_tree_props_T,
 	dt_dd_pair_a1:dt_dd_pair_a1_T
 ):tag_dom_T
-export function dl_tree_(
+export function dl_tree_<env_T extends relement_env_T>(
 	props_OR_dt_dd_pair_a1:dl_tree_props_T|dt_dd_pair_a1_T,
 	dt_dd_pair_a1?:dt_dd_pair_a1_T
 ) {
 	if ((<dl_tree_props_T>props_OR_dt_dd_pair_a1).ctx?.is_ctx) {
 		const {
 			ctx,
+			prefix,
+			suffix,
 			dl_class,
 			dt_class,
 			dd_class,
 		} = <dl_tree_props_T>props_OR_dt_dd_pair_a1
-		return dl_({ class: dl_class }, dt_dd_pair_a1!.map(([_dt, _dd])=>{
-			const _dt_a1 = <tag_dom_T[]>(<any[]>[_dt]).flat(Infinity)
-			const _dd_a1 = _dd ? <tag_dom_T[]>(<any[]>[_dd]).flat(Infinity) : null
-			return [
-				dt_(
-					{ class: dt_class },
-					_dt_a1.map(__dt=>
-						typeof __dt === 'string'
-							? md__raw_(ctx, __dt)
-							: __dt)),
-				_dd
-					? dd_(
-						{ class: dd_class },
-						_dd_a1!.map(__dd=>
-							typeof __dd === 'string'
-								? md__raw_(ctx, __dd)
-								: __dd))
-					: null,
-			]
-		}))
+		return (
+			''
+			+ (typeof prefix === 'string'
+				? '' + md__raw_(ctx, prefix)
+				: prefix
+					? prefix
+					: '')
+			+ dl_<env_T>({ class: dl_class }, dt_dd_pair_a1!.map(([_dt, _dd])=>{
+				const _dt_a1 = <tag_dom_T[]>(<any[]>[_dt]).flat(Infinity)
+				const _dd_a1 = _dd ? <tag_dom_T[]>(<any[]>[_dd]).flat(Infinity) : null
+				return [
+					dt_(
+						{ class: dt_class },
+						_dt_a1.map(__dt=>
+							typeof __dt === 'string'
+								? md__raw_(ctx, __dt)
+								: __dt)),
+					_dd
+						? dd_(
+							{ class: dd_class },
+							_dd_a1!.map(__dd=>
+								typeof __dd === 'string'
+									? md__raw_(ctx, __dd)
+									: __dd))
+						: null,
+				]
+			}))
+			+ (typeof suffix === 'string'
+				? md__raw_(ctx, suffix)
+				: suffix
+					? suffix
+					: '')
+		)
 	} else {
 		dt_dd_pair_a1 = <dt_dd_pair_a1_T>props_OR_dt_dd_pair_a1
-		return dl_(dt_dd_pair_a1.map(([_dt, _dd])=>[
+		return dl_<env_T>(dt_dd_pair_a1.map(([_dt, _dd])=>[
 			dt_(_dt),
 			_dd
 				? dd_(_dd)
