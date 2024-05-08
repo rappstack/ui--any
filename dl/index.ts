@@ -62,7 +62,7 @@ export function dl_tree_<env_T extends relement_env_T>(
 						dt_({ class: dt_class },
 							_dt_a1.map(__dt=>
 								typeof __dt === 'string'
-									? md__raw_(ctx, __dt)
+									? md__raw_({ ctx }, __dt)
 									: __dt)),
 						_dd
 							? dd_({ class: dd_class },
@@ -73,7 +73,7 @@ export function dl_tree_<env_T extends relement_env_T>(
 												<dl_tree_props_T>props_OR_dt_dd_pair_a1_,
 												__dd)
 											: typeof __dd === 'string'
-												? md__raw_(ctx, __dd)
+												? md__raw_({ ctx }, __dd)
 												: __dd
 									)
 								}))
@@ -100,12 +100,12 @@ export function dt_md_(
 	md:string
 ) {
 	const { ctx, ...props } = $p
-	return dt_(props, md__raw_(ctx, md))
+	return dt_(props, md__raw_({ ctx }, md))
 }
 export function dd_md_(
 	$p:tag_props_T<HTMLElementTagNameMap['dd']>&{ ctx:wide_ctx_T },
 	md:string
 ) {
 	const { ctx, ...props } = $p
-	return dd_(props, md__raw_(ctx, md))
+	return dd_(props, md__raw_({ ctx }, md))
 }
