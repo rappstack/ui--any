@@ -1,5 +1,4 @@
 /// <reference lib="dom" />
-import { div } from 'ctx-core/all'
 import { class_ } from 'ctx-core/html'
 import { type relement_env_T, type tag_dom_T, type wide_ctx_T } from 'relementjs'
 import { type tag_props_T } from 'relementjs/any'
@@ -54,7 +53,10 @@ export function dl_tree_<env_T extends relement_env_T>(
 			}
 			return dl_<env_T>({ class: dl_class, hyop }, dt_dd_pair_a1_!(dl_tree_level).map(([_dt, _dd])=>{
 				const _dt_a1 = <tag_dom_T[]>(<any[]>[_dt]).flat(Infinity)
-				const _dd_a1 = _dd ? <tag_dom_T[]>(<any[]>[_dd]).flat(Infinity) : null
+				const _dd_a1 =
+					_dd
+						? <(((level:number)=>tag_dom_T)|tag_dom_T)[]>(<any[]>[_dd]).flat(Infinity)
+						: null
 				return [
 					div_({ class: div_class }, [
 						dt_({ class: dt_class },
@@ -63,12 +65,18 @@ export function dl_tree_<env_T extends relement_env_T>(
 									? md__raw_(ctx, __dt)
 									: __dt)),
 						_dd
-							? dd_(
-								{ class: dd_class },
-								_dd_a1!.map(__dd=>
-									typeof __dd === 'string'
-										? md__raw_(ctx, __dd)
-										: __dd))
+							? dd_({ class: dd_class },
+								_dd_a1!.map(__dd=>{
+									return (
+										typeof __dd === 'function'
+											? dl_tree_(
+												<dl_tree_props_T>props_OR_dt_dd_pair_a1_,
+												__dd)
+											: typeof __dd === 'string'
+												? md__raw_(ctx, __dd)
+												: __dd
+									)
+								}))
 							: null,
 					]),
 				]
@@ -86,7 +94,7 @@ export function dl_tree_<env_T extends relement_env_T>(
 		--dl_tree_level
 	}
 }
-type dt_dd_pair_a1_T = ([tag_dom_T, tag_dom_T]|[tag_dom_T])[]
+type dt_dd_pair_a1_T = ([tag_dom_T, tag_dom_T|((level:number)=>tag_dom_T)]|[tag_dom_T])[]
 export function dt_md_(
 	$p:tag_props_T<HTMLElementTagNameMap['dt']>&{ ctx:wide_ctx_T },
 	md:string
