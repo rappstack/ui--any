@@ -1,4 +1,3 @@
-import './hljs.css'
 import { raw_, type relement_env_T, type wide_ctx_T } from 'relementjs'
 import { marked_ } from './marked.js'
 export type md__raw_props_T = {
