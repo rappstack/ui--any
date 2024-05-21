@@ -7,14 +7,14 @@ import { md__raw_ } from '../md/index.js'
 export type dl_tree_props_T = {
 	ctx:wide_ctx_T
 	hyop?:string
+	class?:string
 	dl_class?:string
-	div_class?:string
 	dt_class?:string
 	dd_class?:string
 	_?:(dl_tree_level:number)=>{
 		hyop?:string
+		class?:string
 		dl_class?:string
-		div_class?:string
 		dt_class?:string
 		dd_class?:string
 	}
@@ -37,8 +37,8 @@ export function dl_tree_<env_T extends relement_env_T>(
 			let {
 				ctx,
 				hyop,
+				class: _class,
 				dl_class,
-				div_class,
 				dt_class,
 				dd_class,
 				_
@@ -46,8 +46,8 @@ export function dl_tree_<env_T extends relement_env_T>(
 			if (_) {
 				const props2 = _(dl_tree_level)
 				if (props2) hyop = props2.hyop
+				_class = class_(_class, props2.class)
 				dl_class = class_(dl_class, props2.dl_class)
-				div_class = class_(div_class, props2.div_class)
 				dt_class = class_(dt_class, props2.dt_class)
 				dd_class = class_(dd_class, props2.dd_class)
 			}
@@ -58,7 +58,7 @@ export function dl_tree_<env_T extends relement_env_T>(
 						? <(((level:number)=>tag_dom_T)|tag_dom_T)[]>(<any[]>[_dd]).flat(Infinity)
 						: null
 				return [
-					div_({ class: div_class }, [
+					div_({ class: _class }, [
 						dt_({ class: dt_class },
 							_dt_a1.map(__dt=>
 								typeof __dt === 'string'
