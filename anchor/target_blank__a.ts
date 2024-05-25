@@ -22,7 +22,7 @@ export function target_blank__a_<env_T extends relement_env_T>(
 			...$p,
 			class: class_(
 				'a_target_blank',
-				!$p.wrap ? 'whitespace-nowrap' : null,
+				($p.wrap ?? true) ? null : 'whitespace-nowrap',
 				'group',
 				$p.class),
 			rel:
