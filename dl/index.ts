@@ -7,65 +7,79 @@ import { md__raw_ } from '../md/index.js'
 export type dl_tree_props_T = {
 	ctx:wide_ctx_T
 	hyop?:string
-	class?:string
 	dl_class?:string
+	dl_props?:Exclude<tag_props_T<HTMLElement>, 'class'>
+	div_class?:string
+	div_props?:Exclude<tag_props_T<HTMLElement>, 'class'>
 	dt_class?:string
+	dt_props?:Exclude<tag_props_T<HTMLElement>, 'class'>
 	dd_class?:string
+	dd_props?:Exclude<tag_props_T<HTMLElement>, 'class'>
 	_?:(dl_tree_level:number)=>{
 		hyop?:string
-		class?:string
 		dl_class?:string
+		dl_props?:Exclude<tag_props_T<HTMLElement>, 'class'>
+		div_class?:string
+		div_props?:Exclude<tag_props_T<HTMLElement>, 'class'>
 		dt_class?:string
+		dt_props?:Exclude<tag_props_T<HTMLElement>, 'class'>
 		dd_class?:string
+		dd_props?:Exclude<tag_props_T<HTMLElement>, 'class'>
 	}
 }
 let dl_tree_level = -1
 export function dl_tree_<env_T extends relement_env_T>(
-	dt_dd_pair_a1_:(level:number)=>dt_dd_pair_a1_T
+	dt_dd_pair_a1_:(level:number)=>dt_dd_pair_T[]
 ):tag_dom_T
 export function dl_tree_<env_T extends relement_env_T>(
 	props:dl_tree_props_T,
-	dt_dd_pair_a1_:(level:number)=>dt_dd_pair_a1_T
+	dt_dd_pair_a1_:(level:number)=>dt_dd_pair_T[]
 ):tag_dom_T
 export function dl_tree_<env_T extends relement_env_T>(
-	props_OR_dt_dd_pair_a1_:dl_tree_props_T|((level:number)=>dt_dd_pair_a1_T),
-	dt_dd_pair_a1_?:(level:number)=>dt_dd_pair_a1_T
+	props_OR_dt_dd_pair_a1_:dl_tree_props_T|((level:number)=>dt_dd_pair_T[]),
+	dt_dd_pair_a1_?:(level:number)=>dt_dd_pair_T[]
 ) {
 	++dl_tree_level
 	try {
 		if ((<dl_tree_props_T>props_OR_dt_dd_pair_a1_).ctx?.is_ctx) {
 			let {
 				ctx,
-				hyop,
-				class: _class,
 				dl_class,
+				dl_props,
+				div_class,
+				div_props,
 				dt_class,
+				dt_props,
 				dd_class,
-				_
+				dd_props,
+				_,
 			} = <dl_tree_props_T>props_OR_dt_dd_pair_a1_
 			if (_) {
 				const props2 = _(dl_tree_level)
-				if (props2) hyop = props2.hyop
-				_class = class_(_class, props2.class)
 				dl_class = class_(dl_class, props2.dl_class)
+				dl_props = { ...dl_props, ...props2.dl_props }
+				div_class = class_(div_class, props2.div_class)
+				div_props = { ...div_props, ...props2.div_props }
 				dt_class = class_(dt_class, props2.dt_class)
+				dt_props = { ...dt_props, ...props2.dt_props }
 				dd_class = class_(dd_class, props2.dd_class)
+				dd_props = { ...dd_props, ...props2.dd_props }
 			}
-			return dl_<env_T>({ class: dl_class, hyop }, dt_dd_pair_a1_!(dl_tree_level).map(([_dt, _dd])=>{
+			return dl_<env_T>({ ...dl_props, class: dl_class }, dt_dd_pair_a1_!(dl_tree_level).map(([_dt, _dd])=>{
 				const _dt_a1 = <tag_dom_T[]>(<any[]>[_dt]).flat(Infinity)
 				const _dd_a1 =
 					_dd
 						? <(((level:number)=>tag_dom_T)|tag_dom_T)[]>(<any[]>[_dd]).flat(Infinity)
 						: null
 				return [
-					div_({ class: _class }, [
-						dt_({ class: dt_class },
+					div_({ ...div_props, class: div_class }, [
+						dt_({ ...dt_props, class: dt_class },
 							_dt_a1.map(__dt=>
 								typeof __dt === 'string'
 									? md__raw_({ ctx }, __dt)
 									: __dt)),
 						_dd
-							? dd_({ class: dd_class },
+							? dd_({ ...dd_props, class: dd_class },
 								_dd_a1!.map(__dd=>{
 									return (
 										typeof __dd === 'function'
@@ -82,7 +96,7 @@ export function dl_tree_<env_T extends relement_env_T>(
 				]
 			}))
 		} else {
-			dt_dd_pair_a1_ = <()=>dt_dd_pair_a1_T>props_OR_dt_dd_pair_a1_
+			dt_dd_pair_a1_ = <()=>dt_dd_pair_T[]>props_OR_dt_dd_pair_a1_
 			return dl_<env_T>(dt_dd_pair_a1_(dl_tree_level).map(([_dt, _dd])=>[
 				dt_(_dt),
 				_dd
@@ -94,7 +108,7 @@ export function dl_tree_<env_T extends relement_env_T>(
 		--dl_tree_level
 	}
 }
-type dt_dd_pair_a1_T = ([tag_dom_T, tag_dom_T|((level:number)=>tag_dom_T)]|[tag_dom_T])[]
+export type dt_dd_pair_T = [tag_dom_T, tag_dom_T|((level:number)=>tag_dom_T)]|[tag_dom_T]
 export function dt_md_(
 	$p:tag_props_T<HTMLElementTagNameMap['dt']>&{ ctx:wide_ctx_T },
 	md:string
