@@ -4,6 +4,7 @@ import { type relement_env_T, type tag_dom_T, type wide_ctx_T } from 'relementjs
 import { type tag_props_T } from 'relementjs/any'
 import { dd_, div_, dl_, dt_ } from 'relementjs/html'
 import { md__raw_ } from '../md/index.js'
+import { nl } from '../string/index.js'
 export type dl_tree_props_T = {
 	ctx:wide_ctx_T
 	hyop?:string
@@ -66,10 +67,10 @@ export function dl_tree_<env_T extends relement_env_T>(
 				dd_props = { ...dd_props, ...props2.dd_props }
 			}
 			return dl_<env_T>({ ...dl_props, class: dl_class }, dt_dd_pair_a1_!(dl_tree_level).map(([_dt, _dd])=>{
-				const _dt_a1 = <tag_dom_T[]>(<any[]>[_dt]).flat(Infinity)
+				const _dt_a1 = string__merge__a1_([_dt])
 				const _dd_a1 =
 					_dd
-						? <(((level:number)=>tag_dom_T)|tag_dom_T)[]>(<any[]>[_dd]).flat(Infinity)
+						? string__merge__a1_([_dd])
 						: null
 				return [
 					div_({ ...div_props, class: div_class }, [
@@ -83,8 +84,7 @@ export function dl_tree_<env_T extends relement_env_T>(
 								_dd_a1!.map(__dd=>{
 									return (
 										typeof __dd === 'function'
-											? dl_tree_(
-												<dl_tree_props_T>props_OR_dt_dd_pair_a1_,
+											? dl_tree_(<dl_tree_props_T>props_OR_dt_dd_pair_a1_,
 												__dd)
 											: typeof __dd === 'string'
 												? md__raw_({ ctx }, __dd)
@@ -107,6 +107,25 @@ export function dl_tree_<env_T extends relement_env_T>(
 	} finally {
 		--dl_tree_level
 	}
+}
+function string__merge__a1_(_a1:(tag_dom_T|((level:number)=>tag_dom_T))[]):(tag_dom_T|((level:number)=>tag_dom_T))[] {
+	const a1 = <tag_dom_T[]>(<any>_a1).flat(Infinity)
+	let cur_str = ''
+	const string__merge__a1:tag_dom_T[] = []
+	for (let dom of a1) {
+		if (typeof dom === 'string') {
+			if (cur_str) cur_str += nl
+			cur_str += dom
+		} else {
+			if (cur_str) {
+				string__merge__a1.push(cur_str)
+				cur_str = ''
+			}
+			string__merge__a1.push(dom)
+		}
+	}
+	if (cur_str) string__merge__a1.push(cur_str)
+	return string__merge__a1
 }
 export type dt_dd_pair_T = [tag_dom_T, tag_dom_T|((level:number)=>tag_dom_T)]|[tag_dom_T]
 export function dt_md_(
