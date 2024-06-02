@@ -60,7 +60,9 @@ export function dl_tree_<env_T extends relement_env_T>(
 				dd_props = { ...dd_props, ...props2.dd_props }
 			}
 			const basic_props_OR_dt_dd_pair__a1 = basic_props_OR_dt_dd_pair__a1_!(dl_tree_level)
-			const has_basic_props = (<any>basic_props_OR_dt_dd_pair__a1[0]).length == null
+			const has_basic_props = (
+				basic_props_OR_dt_dd_pair__a1[0]
+				&& (<any>basic_props_OR_dt_dd_pair__a1[0]).length == null)
 			const basic_props =
 				has_basic_props
 				&& <dl_tree_basic_props_T>basic_props_OR_dt_dd_pair__a1[0]
