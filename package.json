@@ -41,11 +41,11 @@
 		"string"
 	],
 	"dependencies": {
-		"ctx-core": "^7.2.14",
+		"ctx-core": "^7.2.16",
 		"highlight.js": "^11.9.0",
 		"marked": "^12.0.2",
 		"marked-highlight": "^2.1.1",
-		"relementjs": "^0.80.14"
+		"relementjs": "^0.80.15"
 	},
 	"devDependencies": {
 		"bun-types": "latest"
